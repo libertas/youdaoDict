@@ -1,7 +1,7 @@
 import json
 import urllib.request
 import sys, getopt
-
+import regi
 keyfrom='lcjsky'
 key='1108318610'
 
@@ -31,9 +31,9 @@ def dict(word):
 				for each_value in each_word['value'][0:-1]:
 					print(each_value, end=",")
 				print(each_word['value'][-1])
-		if 'translation' in data:
-			print('Translation Result:')
-			print('\t',data['translation'][0],sep="")
+			if 'translation' in data:
+				print('Translation Result:')
+				print('\t',data['translation'][0],sep="")
 
 def error(errorCode):
 	if errorCode==20:
@@ -57,6 +57,6 @@ def main():
 
 def usage():
     print("-h Help")
-    print("-l Link")
+    print("-w word")
 
 main()
