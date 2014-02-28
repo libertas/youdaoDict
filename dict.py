@@ -2,8 +2,8 @@ import json
 import urllib.request
 import sys, getopt
 
-keyfrom='******'
-key='*********'
+keyfrom='lcjsky'
+key='***'
 
 def dict(word):
 	url='http://fanyi.youdao.com/openapi.do?keyfrom='+keyfrom+'&key='+key+'&type=data&doctype=json&version=1.1&q='+word
@@ -44,7 +44,6 @@ def main():
 				usage()
 			elif opt in ('-w'):
 				dict(arg)
-		dict(args[0])
 	except getopt.GetoptError:
 		usage()
 
