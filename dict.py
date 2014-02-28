@@ -3,7 +3,7 @@ import urllib.request
 import sys, getopt
 
 keyfrom='lcjsky'
-key='***'
+key='1108318610'
 
 def dict(word):
 	url='http://fanyi.youdao.com/openapi.do?keyfrom='+keyfrom+'&key='+key+'&type=data&doctype=json&version=1.1&q='+word
@@ -13,19 +13,27 @@ def dict(word):
 	if data['errorCode']!=0:
 		error(data['errorCode'])
 	else:
+		if 'basic' in data:
+			print('Basic Result:')
+			basicdict = data['basic']
+			if 'phonetic' in basicdict:
+				print('\tphonetic:', basicdict['phonetic'])
+			if 'explains' in basicdict:
+				print('\texplains:', end="")
+				for each_ex in basicdict['explains'][0:-1]:
+					print(each_ex,end=',')
+				print(basicdict['explains'][-1])
 		if 'web' in data:
 			print('Web Result:')
 			webdict=data['web']
 			for each_word in webdict:
-				print('\t',each_word['key'], each_word['value'])
-		if 'basic' in data:
-			print('Basic Result:')
-			basicdict = data['basic']
-			print('\t','phonetic:', basicdict['phonetic'])
-			print('\t','explains:', basicdict['explains'])
+				print('\t',each_word['key'],":",sep="",end="")
+				for each_value in each_word['value'][0:-1]:
+					print(each_value, end=",")
+				print(each_word['value'][-1])
 		if 'translation' in data:
 			print('Translation Result:')
-			print('\t',data['translation'])
+			print('\t',data['translation'][0],sep="")
 
 def error(errorCode):
 	if errorCode==20:
