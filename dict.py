@@ -2,8 +2,8 @@ import json
 import urllib.request
 import sys, getopt
 
-keyfrom='lcjsky'
-key='1108318610'
+keyfrom='******'
+key='*********'
 
 def dict(word):
 	url='http://fanyi.youdao.com/openapi.do?keyfrom='+keyfrom+'&key='+key+'&type=data&doctype=json&version=1.1&q='+word
