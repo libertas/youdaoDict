@@ -1,11 +1,12 @@
 import json
-import urllib.request
+import urllib.request, urllib.parse
 import sys, getopt
-import regi
+import re
 keyfrom='lcjsky'
 key='1108318610'
 
 def dict(word):
+	word=urllib.parse.quote(word)
 	url='http://fanyi.youdao.com/openapi.do?keyfrom='+keyfrom+'&key='+key+'&type=data&doctype=json&version=1.1&q='+word
 	data=urllib.request.urlopen(url).read()
 	data=data.decode('utf8')
@@ -57,6 +58,6 @@ def main():
 
 def usage():
     print("-h Help")
-    print("-w word")
+    print("-w word Long words you should use\"\"")
 
 main()
