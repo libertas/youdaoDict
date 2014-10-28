@@ -53,6 +53,13 @@ def main():
 				usage()
 			elif opt in ('-w'):
 				dict(arg)
+		if len(sys.argv) == 1:
+			print("Welcome")
+			arg = input(">")
+			while not arg == "":
+				dict(arg)
+				arg = input(">")
+			print("Bye")
 	except getopt.GetoptError:
 		usage()
 
