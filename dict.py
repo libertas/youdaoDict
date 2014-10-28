@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import json
 import urllib.request, urllib.parse
 import sys, getopt
